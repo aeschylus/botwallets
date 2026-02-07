@@ -261,6 +261,7 @@ export class BotWalletImpl implements BotWallet {
   }
 
   destroy(): void {
-    this.database.close();
+    // No-op for individual wallets — DB and engine are shared via pool.
+    // Use destroyAll() to close everything at process exit.
   }
 }

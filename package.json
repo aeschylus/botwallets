@@ -1,11 +1,14 @@
 {
   "name": "botwallets",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Bitcoin ecash wallets for bots - simple Cashu wallet API for autonomous agents",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "botwallets": "./dist/cli.js"
+  },
   "exports": {
     ".": {
       "import": {
@@ -15,6 +18,26 @@
       "require": {
         "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
+      }
+    },
+    "./telegram": {
+      "import": {
+        "types": "./dist/telegram.d.ts",
+        "default": "./dist/telegram.js"
+      },
+      "require": {
+        "types": "./dist/telegram.d.cts",
+        "default": "./dist/telegram.cjs"
+      }
+    },
+    "./slack": {
+      "import": {
+        "types": "./dist/slack.d.ts",
+        "default": "./dist/slack.js"
+      },
+      "require": {
+        "types": "./dist/slack.d.cts",
+        "default": "./dist/slack.cjs"
       }
     }
   },
@@ -45,5 +68,17 @@
     "tsup": "^8.0.0",
     "typescript": "^5.4.0",
     "vitest": "^2.0.0"
+  },
+  "peerDependencies": {
+    "telegraf": "^4.0.0",
+    "@slack/bolt": "^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "telegraf": {
+      "optional": true
+    },
+    "@slack/bolt": {
+      "optional": true
+    }
   }
 }
